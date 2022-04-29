@@ -18,6 +18,7 @@ class CommentController
             header('Location: /');
             die;
         }
+        $btnName = "Add";
 
         //Récupération des informations de l'utilisateur connecté dans l'objet user.
         $user = $_SESSION['user'];
@@ -94,6 +95,7 @@ class CommentController
             header('Location: /');
             die;
         }
+        $btnName = "Edit";
 
         $requestMethod = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
 
