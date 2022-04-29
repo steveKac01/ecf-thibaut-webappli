@@ -32,29 +32,29 @@ class CommentDao extends AbstractDao
         return $result;
     }
 
-    /**
+      /**
      * Récupères de la base de données un commentaire en fonction de son id ou null si il n'éxiste pas
      *
      * @param int $id Identifiant du commentaire qu'on doit récupérer de la bdd
      * @return Article|null Objet du commentaire récupéré en bdd ou null
      */
     public function getCommentById($idComment): ?Comment
-    {
+    { 
         $querry = $this->dbh->prepare("SELECT * FROM comment where id_comment=:id_comment;");
         $querry->execute([":id_comment" => $idComment]);
         $result = $querry->fetch(\PDO::FETCH_ASSOC);
-
+      
         if (empty($result)) {
             return null;
         }
 
-        $c = new Comment();
-        $c->setUserId($result['user_id'])
-            ->setContent($result['content'])
-            ->setCreatedAt($result['created_at'])
-            ->setIdComment($result['id_comment']);
+            $c = new Comment();
+            $c->setUserId($result['user_id'])
+                ->setContent($result['content'])
+                ->setCreatedAt($result['created_at'])
+                ->setIdComment($result['id_comment']);
 
-        return $c;
+            return $c;
     }
 
     /**
@@ -91,16 +91,17 @@ class CommentDao extends AbstractDao
     }
 
     /**
-     * Edite un commentaire de la base de données en fonction de son ID.
-     *
-     * @param Comment Objet le commentaire à insérer dans la BDD.
-     */
+    * Edite un commentaire de la base de données en fonction de son ID.
+    *
+    * @param Comment Objet le commentaire à insérer dans la BDD.
+    */
     public function edit(Comment $comment): void
     {
         $querry = $this->dbh->prepare("UPDATE comment SET content = :content WHERE id_comment = :id_comment");
         $querry->execute([
             ":content" => $comment->getContent(),
-            ":id_comment" => $comment->getIdComment()
-        ]);
+            ":id_comment" => $comment->getIdComment()            
+        ]);     
     }
+ 
 }

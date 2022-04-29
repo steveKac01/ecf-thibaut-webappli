@@ -4,11 +4,11 @@
 
          <?php foreach ($comments as $comment) : ?>
              <div class="p-3 border border-1 rounded mb-3" id="comment<?= $comment->getIdComment(); ?>">
-                 <?= filter_var($comment->getContent(), FILTER_SANITIZE_SPECIAL_CHARS); ?>
-                 <?php //todo: VERIFIER QUIL EST L AUTEUR DU COMMENTAIRE
+                 <?= filter_var($comment->getContent(), FILTER_SANITIZE_SPECIAL_CHARS); ?>    <hr>
+                 <?php
                     if (isset($_SESSION['user'])) :
                     ?>
-                     <hr>
+                 
                      <ul class="nav">
                          <?php
                             if (isset($_SESSION['user'])) :
@@ -23,9 +23,9 @@
                          <?php
                             endif;
                             ?>
-                     </ul>
+                     </ul> <?php endif ?>
              </div>
-         <?php endif ?>
+        
      <?php endforeach ?>
 
  <?php else : ?>

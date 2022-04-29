@@ -1,5 +1,4 @@
 <?php
-
 require_once VIEW . DIRECTORY_SEPARATOR . 'header.html.php';
 ?>
 <article class="p-3 border border-1 rounded mb-3" id="article<?= $article->getIdArticle() ?>">
@@ -18,26 +17,18 @@ require_once VIEW . DIRECTORY_SEPARATOR . 'header.html.php';
             </li>
             <li class="nav-item me-2">
                 <a class="nav-link btn btn-danger text-light" href="<?= sprintf("/article/delete/%d", $article->getIdArticle()) ?>">Delete</a>
-            </li> <?php
-    if (isset($_SESSION['user'])) :
-    ?>
-            <li class="nav-item me-2">
-                <a class="nav-link btn btn-success text-light" href="<?= sprintf("/comment/new/%d",filter_var($article->getIdArticle(),FILTER_VALIDATE_INT));?>">Add Comment</a>
             </li>
-            <?php endif ?>
+            <li class="nav-item me-2">
+                <a class="nav-link btn btn-success text-light" href="<?= sprintf("/comment/new/%d", filter_var($article->getIdArticle(), FILTER_VALIDATE_INT)); ?>">Add Comment</a>
+            </li>
+
         </ul>
     <?php
     endif;
     ?>
-     <?php
-    if (isset($_SESSION['user'])) :
-    ?>
-    <span><a href="<?= sprintf("/comment/new/%d",filter_var($article->getIdArticle(),FILTER_VALIDATE_INT));?>">
-    Ajouter un nouveau commentaire.</a></span>
-        <?php endif ?>
 </article>
 <?php
-require_once(implode(DIRECTORY_SEPARATOR,[VIEW,"comment","show.html.php"]));
+require_once(implode(DIRECTORY_SEPARATOR, [VIEW, "comment", "show.html.php"]));
 
 require_once VIEW . DIRECTORY_SEPARATOR . "footer.html.php";
 ?>
