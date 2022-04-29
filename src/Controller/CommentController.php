@@ -18,7 +18,6 @@ class CommentController
             header('Location: /');
             die;
         }
-        $btnName = "Add";
 
         //Récupération des informations de l'utilisateur connecté dans l'objet user.
         $user = $_SESSION['user'];
@@ -53,6 +52,7 @@ class CommentController
             }
         }
         //On affiche le formulaire
+        $btnName = "Add";
         require_once implode(DIRECTORY_SEPARATOR, [VIEW, 'comment', 'new.html.php']);
     }
 
@@ -95,8 +95,7 @@ class CommentController
             header('Location: /');
             die;
         }
-        $btnName = "Edit";
-
+      
         $requestMethod = filter_input(INPUT_SERVER, 'REQUEST_METHOD');
 
         if ('POST' === $requestMethod) {
@@ -140,6 +139,7 @@ class CommentController
             }
         }
         //On affiche le formulaire
+        $btnName = "Edit";
         require_once implode(DIRECTORY_SEPARATOR, [VIEW, 'comment', 'new.html.php']);
     }
 }
